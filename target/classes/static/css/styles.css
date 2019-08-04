@@ -1,0 +1,283 @@
+
+/*.backofclient-mgmt{
+       background: url(gradient-blue.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+
+  background-size: cover;
+  min-height: 100%;
+ height:100%; 
+}*/
+body {overflow-x: hidden;}
+.backofclient{
+   background: url(beach.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+
+  background-size: cover;
+  min-height: 100%;
+ height:100%; 
+}
+#menu a{
+/*       background-image:linear-gradient(#2B2E3A,rgba(0, 0, 0, 0.6));*/
+color:grey;
+
+}
+.menu{
+    display: flex;
+    justify-content: flex-end;
+padding-top:20px; 
+}
+.menu a{
+    
+    width: 90px;
+        text-decoration: none;
+	margin-top: 25px;
+	color:white;
+
+}
+hr{
+    margin-top:0px;
+	padding: 0px;
+
+}
+.back{
+    background-image: url(client_background.png);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.size{
+    display: none;
+    
+    margin:10px;
+}
+.rows{
+    display: flex;
+justify-content:center;
+ flex-wrap: wrap;
+}
+#side1 a{
+    text-decoration: none;
+      cursor: pointer;
+color: white;
+font-size: 13px;
+}
+.image{
+    height:150px;
+margin: 10px;   
+    background-image: url(user.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+@media screen and (max-width:1199px){
+    .size{
+width:300px;    }
+}
+
+.box a{
+    padding: 20px;
+
+}
+.box{
+    text-align: center;
+    
+}
+.parent{
+    height: 500px;
+}
+
+
+.stylebar{
+     height:100%;
+   
+/*    font-family:monospace;*/
+    font-family: arial;
+    font-size:15px;  
+}
+
+.stylebar li{
+    padding: 10px;
+}
+/*.stylebar a:active{
+	background-color:rgb(201, 198, 210,0.5);
+}*/
+/*#side1 ul li:hover{
+	background-color:rgb(201, 198, 210,0.4);
+	border-bottom-right-radius: 40px;
+	border-top-right-radius: 40px;
+}hover ra active link a ma click gareanusar hun6*/
+#side1 li.active{
+	background-color:rgba(201, 198, 210,0.4);
+	border-bottom-right-radius: 40px;
+	border-top-right-radius: 40px;
+       
+}
+.stylebar a{
+    color: white;
+	text-decoration: none;
+        
+}
+.stylebar ul{
+    margin-left: 0px;
+    padding-left: 0px;
+}
+.stylebar ul hr{
+    margin-bottom: 0px;
+}
+.search-container button:hover {
+  background: #ccc;
+
+}
+.search-container button{
+    width:30px;
+    float: right;
+     
+}
+.search-container input[type=text]{
+    
+    width:700px;
+}
+
+
+/*//card*/
+
+
+/* Profile container */
+.profile {
+  margin: 20px 0;
+}
+
+/* Profile sidebar */
+.profile-sidebar {
+  padding: 20px 0 10px 0;
+  background: #fff;
+}
+
+
+
+.profile-usertitle {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profile-usertitle-name {
+  color: #5a7391;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.profile-usertitle-job {
+  text-transform: uppercase;
+  color: #5b9bd1;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.profile-userbuttons {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.profile-userbuttons .btn {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 15px;
+  margin-right: 5px;
+}
+
+.profile-userbuttons .btn:last-child {
+  margin-right: 0px;
+}
+    
+.profile-usermenu {
+  margin-top: 30px;
+}
+
+.profile-usermenu ul li {
+  border-bottom: 1px solid #f0f4f7;
+}
+
+.profile-usermenu ul li:last-child {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li a {
+  color: #93a3b5;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.profile-usermenu ul li a i {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.profile-usermenu ul li a:hover {
+  background-color: #fafcfd;
+  color: #5b9bd1;
+}
+
+.profile-usermenu ul li.active {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li.active a {
+  color: #5b9bd1;
+  background-color: #f6f9fb;
+  border-left: 2px solid #5b9bd1;
+  margin-left: -2px;
+}
+
+#footer{
+      bottom: 0;
+/*    background: color overlay linear-gradient(#191B22,rgba(0, 0, 0, 0.45));*/
+/*    background-color:#191B22; */
+    background-color:#2B2E3A; 
+
+/*   background-image:linear-gradient(#2B2E3A,rgba(0, 0, 0, 0.6));*/
+   position:absolute;
+    height:120px;
+    width: 100%;
+    color:white;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    
+}
+
+#panels{
+    display: none;
+    padding: 50px;
+}
+.row{
+      margin-right:0!important; 
+}
+
+/*#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+   Set the fixed height of the footer here 
+  height: 280px;
+  background: 
+   color overlay  
+    linear-gradient(
+      #191B22, 
+      rgba(0, 0, 0, 0.45)
+    ),
+     image to overlay 
+    url(http://images.cdn.fotopedia.com/_avPIZmqM3w-7z161LH_268-hd.jpg);
+}
+
+
+ Custom footer CSS
+-------------------------------------------------- 
+
+.container .text-muted {
+  margin: 20px 0;
+}
+.footertext {
+  color: #ffffff;
+}*/

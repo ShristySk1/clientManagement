@@ -1,0 +1,62 @@
+<th:block th:include="/message"></th:block>
+
+<div class="col-lg-7 parent">
+
+    <div class="stylebar" id="middle">
+        <h3 style="background-color: white;padding:12px;border-radius: 5px;">Name of project:<span th:text="${project.name}"></span>
+           
+        </h3>
+
+        <form method='post' action="/admin/shared/edit" th:object='${editt}'>
+  
+                    <div class="form-group">
+                        <label for="name">Project Name</label>
+
+                        <input type="text" name="name" class="form-control" id="type-noticeTitle" th:value='${project.name}'>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <!--    <input type="hidden" name="listId" id="type-id" value="0L" />-->
+                        <input type="text" name="description" class="form-control" id="type-notice" th:value='${project.description}'>
+
+                    </div>
+                    <div class="form-group">
+
+
+                        <label for="startDate">Start Date</label>
+
+                        <input type="text" name="startDate" class="form-control" id="type-noticeTitle" th:value='${project.startDate}'>
+
+
+
+                    </div>
+                    <div class="form-group">
+
+
+                        <label for="endDate">End Date</label>
+
+                        <input type="text" name="endDate" class="form-control" id="type-noticeTitle" th:value='${project.endDate}'>
+
+
+
+                    </div>
+   <input type="hidden" id="cid" name="projectId" th:value="${project.projectId}">
+
+                    <input type="hidden" id="cid" name="clientId" th:value="${project.clientId}">
+
+<!--                    <input type="hidden" id="cid" name="clientId" th:value="${id}"></input>-->
+
+    <div class="modal-footer">
+                  
+                    <button type="submit" class="btn btn-success" id="save">Save changes</button>
+                </div>
+
+            
+</form>
+       
+
+    </div>
+</div>
+
+
+

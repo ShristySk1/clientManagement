@@ -1,0 +1,192 @@
+<div class="col-lg-3 parent">
+    <div class="stylebar" id="side2"> 
+        <div class="container">
+            <div class="row profile">
+                <div class="col-md-3">
+                    <div class="profile-sidebar">
+                        <!-- SIDEBAR USERPIC -->
+
+                        <!-- END SIDEBAR USERPIC -->
+                        <!-- SIDEBAR USER TITLE -->
+                        <div class="profile-usertitle">
+                            <div class="profile-usertitle-name">
+                                <span th:text="${client.name}"></span>
+                            </div>
+                            <div class="profile-usertitle-job">
+                                <span th:text="${client.address}"></span>
+                                <!--                                            <span th:text=${client.clientId}" name="del" style="display: none;"></span>-->
+                            </div>
+                        </div>
+                        <!-- END SIDEBAR USER TITLE -->
+                        <!-- SIDEBAR BUTTONS -->
+                        <div class="profile-userbuttons">
+                            <button type="button" class="btn btn-success btn-sm" id="adds-btn">Edit</button>
+                            <span class="divalert"><button type="button" class="btn btn-danger btn-sm alertdemo" id="delete-btn"><a  id="delete" >Delete</a></button>
+                            </span></div>
+                        <!-- END SIDEBAR BUTTONS -->
+                        <!-- SIDEBAR MENU -->
+                        <div class="profile-usermenu">
+                            <ul class="nav">
+                                <li class="active">
+                                    <a href="#">
+                                        <i class="glyphicon glyphicon-home"></i>
+                                        <span th:text="${client.phoneNo}"></span> </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                        <span th:text="${client.email}"></span> </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class="glyphicon glyphicon-ok"></i>
+                                        <span th:text="${client.country}"></span> </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <form method="get" action="">
+                            <input type="hidden" id="deleteId" th:value="${client.clientId}" name="clientid"> 
+                        </form>
+                        <!-- END MENU -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div></div>
+
+<!--<--------------------modal open>-->
+<div class="modal fade" id="types-dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="forms-title">Modal title</h4>
+            </div>
+            <form id="types-form" th:object="${editClient}">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name">Client Name</label>
+
+                        <input type="text" name="name" class="form-control" id="type-noticeTitle" placeholder="Full Name" th:value="${client.name}">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="hidden" name="clientId" id="type-id" th:value="${client.clientId}" />
+                        <input type="text" name="address" class="form-control" id="type-notice" placeholder="Address" th:value="${client.address}">
+
+                    </div>
+                    <div class="form-group">
+
+
+                        <label for="phoneNo">Phone number</label>
+
+                        <input type="text" name="phoneNo" class="form-control" id="type-noticeTitle" placeholder="Phone No." th:value="${client.phoneNo}">
+
+
+
+                    </div>
+                    <div class="form-group">
+
+
+                        <label for="email">Email</label>
+
+                        <input type="text" name="email" class="form-control" id="type-noticeTitle" placeholder="Email" th:value="${client.email}">
+
+
+
+                    </div>
+                    <div class="form-group">
+
+
+                        <label for="country">Country</label>
+
+                        <input type="text" name="country" class="form-control" id="type-noticeTitle" placeholder="Country" th:value="${client.country}">
+
+
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success" id="saves-btn">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--</modal close>-->
+<script>
+    $(document).ready(function () {
+        $("#adds-btn").on('click', function () {
+            $("#types-dialog #forms-title").html("Add Project");
+            $("#types-dialog").modal();
+        });
+        $("#saves-btn").on('click', function () {
+            $.post('/admin/saveEditClient',
+                    $("#types-form").serialize(), function (res) {
+                location.href = "/admin/sideclient/1";
+                $("#types-dialog").modal('hide');
+            });
+            return false;
+        });
+//     $("#delete-btn").on('click',function(){
+//         alert("Are you sure you want to delete");
+////            url = "/deleteClient";
+////      $( location ).attr("href", url);
+//     })
+    });
+</script>
+<script>
+//$('.alertdemo').click(confirm);
+//
+//function confirm()
+//{
+//  $.jAlert({'type': 'confirm','confirmQuestion':'Your account will be deleted permanently, Do you want to proceed?', 'onConfirm': function(){
+//    alert('Your account is removed!');    
+//  }, 'onDeny': function(){
+//    alert('Your account is safe!');    
+//  } });
+//}
+    $('#delete').on('click', function () {
+        var value = document.getElementById("deleteId").value;
+
+        $.confirm({
+            title: 'Confirm!',
+            content: 'Are you sure you want to delete ?',
+            buttons: {
+                confirm: function () {
+
+                    $.confirm({
+                        title: 'Confirm!',
+                        content: 'All the associated project with this will also get deleted',
+                        buttons: {
+                            confirm: function () {
+                                url = "/admin/deleteClient/" + value;
+
+                                $(location).attr("href", url);
+                            }
+                        }
+                    });
+
+
+                },
+                cancel: function () {
+                    $.alert('Canceled!');
+                }
+
+//        somethingElse: {
+//            text: 'Something else',
+//            btnClass: 'btn-blue',
+//            keys: ['enter', 'shift'],
+//            action: function(){
+//                $.alert('Something else?');
+//            }
+//        }
+            }
+        });
+    });
+
+
+</script>

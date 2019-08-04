@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+        <div class="row">
+            <div class="col-lg-2"><h1 style="color: white;">Clients</h1></div>
+<div class="col-lg-6">
+<div class="menu">
+ <div class="search-container">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="glyphicon glyphicon-search"></i></button>
+    </form>
+                      </div></div></div>
+      <div class="col-lg-4">
+            <div class="menu">
+<!--        <a>HOME</a>
+        <a>CLIENTS</a>
+        <a>PROJECTS</a>-->
+        <a th:if="${#request.userPrincipal != null}" th:href="@{/}">SIGN OUT</a>
+
+        </div>      
+    </div>
+        </div>
+<!--nav close-->
+     
+
+<hr>   
+    <div class="row">
+<!--    <sidebar-->
+        <div class="col-lg-2 parent">
+      
+            <div class="stylebar" id="side1">
+                <br>
+                <ul style="list-style:none;text-align: center;">
+<!--    <li style="background-color: rgb(201, 198, 210,0.4);border-bottom-right-radius: 40px;
+	border-top-right-radius: 40px;"><a><b>Ben Hart</b></a></li>-->
+<div id="add-btn" style="cursor: pointer;"><span style="background-color: white;padding: 22px;border-radius:25px;"><span class="glyphicon glyphicon-plus text-primary"></span> Add Clients</span></div>
+<br>
+<br>
+<li  th:each="cs : ${clients}" ><a th:href="@{'/admin/sideclient/'+${cs.clientId}}"><b><span th:text="${cs.name}"></span></b></a></li>
+    </ul>
+
+    </div></div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="type-dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="form-title">Modal title</h4>
+      </div>
+        <form id="type-form" th:object="${addClient}">
+      <div class="modal-body">
+            <div class="form-group">
+    <label for="name">Client Name</label>
+
+    <input type="text" name="name" class="form-control" id="type-noticeTitle" placeholder="Full Name">
+  </div>
+       <div class="form-group">
+    <label for="address">Address</label>
+<!--    <input type="hidden" name="listId" id="type-id" value="0L" />-->
+    <input type="text" name="address" class="form-control" id="type-notice" placeholder="Address">
+
+  </div>
+           <div class="form-group">
+  
+
+               <label for="phoneNo">Phone number</label>
+
+    <input type="text" name="phoneNo" class="form-control" id="type-noticeTitle" placeholder="Phone No.">
+
+     
+   
+  </div>
+           <div class="form-group">
+  
+
+               <label for="email">Email</label>
+
+    <input type="text" name="email" class="form-control" id="type-noticeTitle" placeholder="Email">
+
+     
+   
+  </div>
+           <div class="form-group">
+  
+
+               <label for="country">Country</label>
+
+    <input type="text" name="country" class="form-control" id="type-noticeTitle" placeholder="Country">
+
+     
+   
+  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success" id="save-btn">Save changes</button>
+      </div>
+        </form>
+    </div>
+  </div>
+</div>
+<!--modal close-->
+<script>
+    $(document).ready(function(){
+        $("#add-btn").on('click',function(){
+            $("#type-dialog #form-title").html("Add Client");
+            $("#type-dialog").modal();
+        });
+        $("#save-btn").on('click',function(){
+            $.post('/admin/saveClient',
+            $("#type-form").serialize(),function(res){
+                location.href="/admin/sideclient/1";
+                $("#type-dialog").modal('hide');
+            });
+            return false;
+        });
+    });
+    </script>
+<!--        sidebarclose-->

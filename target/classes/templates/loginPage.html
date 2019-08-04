@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <title>Login</title>
+       <link rel="stylesheet" th:href="@{/css/style.css}">
+   </head>
+   <body>
+      <!-- Include _menu.html -->
+       
+    
+       
+      <!-- /login?error=true -->
+      <div th:if="${#request.getParameter('error') == 'true'}"
+            style="color:red;margin:10px 0px;">
+         Login Failed!!!<br />
+         Reason :
+         <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
+            th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
+                Static summary
+         </span>
+            
+      </div>
+      
+       <div class="box">
+		<h2>Login</h2>
+        <form  th:action ="@{/j_spring_security_check}"  method = "POST" name="f">
+                <div class="inputbox">
+
+                    <input type="text" name="username" required="">
+                    <label>Email ID</label>
+                </div>
+                <div class="inputbox">
+                    
+                    <input type="password" name="password" required="">
+                    <label>Password</label>
+                    
+                </div>
+         
+                <input type="submit" name="submit" value="Submit">
+          
+                
+        </form>
+             
+       <label>Don't have an account?</label>
+       <div> <a th:href="@{/register}"><p><p><br><b>Register Now</b></p></p></a>
+       </div>
+       </div>
+   
+
+   </body>
+    
+</html>

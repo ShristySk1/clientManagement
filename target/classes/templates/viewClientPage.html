@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header>Client Details</header>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Phone no. </th>
+                    <th>Email</th>
+                    <th>Country</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="c:${client}">
+                    <td><span th:text='${c.clientId}'></span></td>
+                    <td><span th:text='${c.name}'></span></td>
+
+                    <td><span th:text='${c.address}'></span></td>
+
+                    <td><span th:text='${c.email}'></span></td>
+
+                    <td><span th:text='${c.phoneNo}'></span></td>
+                                        <td><span th:text='${c.country}'></span></td>
+
+
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
